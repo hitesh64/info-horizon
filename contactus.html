@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Contact INFO HORIZONS PVT.LTD for IT solutions, web development, mobile apps, digital marketing, and consulting services.">
+    <meta name="keywords" content="contact us, INFO HORIZONS contact, IT consulting contact, web development contact">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="./images/infofull.jpg" as="image">
+    
+    <!-- Custom Contact Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fc;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .contact-container {
+            width: 80%;
+            margin: auto;
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 8rem;
+        }
+        h2 {
+            color: #2b2b2b;
+            border-bottom: 3px solid #b22222;
+            display: inline-block;
+            padding-bottom: 5px;
+            transition: 0.5s;
+        }
+        h2:hover { letter-spacing: 1px; }
+        .office-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .office-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            margin: 10px;
+            text-align: left;
+            max-width: 45%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .office-box:hover {
+            transform: scale(1.05);
+        }
+        .office-box h3 { color: #b22222; margin-bottom: 10px; }
+        .office-box p { color: #555; margin: 5px 0; }
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .form-left { flex: 1; text-align: left; }
+        .form-right { flex: 1; text-align: left; }
+        input, select, textarea {
+            width: 90%;
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+        input:focus, textarea:focus {
+            border-color: #b22222;
+            box-shadow: 0 0 10px rgba(178, 34, 34, 0.5);
+        }
+        button {
+            background: #b22222;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        button:hover {
+            background: #8b0000;
+            transform: scale(1.1);
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: 0.4s;
+        }
+        button:hover::before {
+            left: 100%;
+        }
+        .map-container {
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-in-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+        footer {
+            background-color: #E9EBF0;
+            padding: 30px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 10%;
+        }
+        .footer-logo img {
+            width: 120px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
+        .footer-section h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+        .footer-section ul li a:hover {
+            color: #ff4d4d;
+        }
+        .footer-subscribe {
+            text-align: left;
+        }
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .subscribe-box input {
+            border: none;
+            padding: 10px;
+            flex: 1;
+            outline: none;
+        }
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .subscribe-box button:hover {
+            background-color: #ff4d4d;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a img {
+            width: 25px;
+            margin: 0 5px;
+            transition: transform 0.3s;
+        }
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+        .quote-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff4d4d;
+            padding: 15px;
+            writing-mode: vertical-rl;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px 0 0 10px;
+            transition: background 0.3s;
+        }
+        .quote-button:hover {
+            background: #e63939;
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+       header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo img {
+    height: 65px;
+}
+
+/* Navigation Bar */
+nav {
+    position: absolute;
+    top: 50px; /* Moves navbar lower */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the navbar */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation List */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Links */
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+}
+
+/* Hover Effect */
+nav ul li a:hover,
+.active {
+    color: #c0392b;
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    nav {
+        position: relative;
+        top: 0;
+        transform: none;
+        width: 100%;
+        background: white;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contactus.html" class="active">Contact</a></li>
+                    <li><a href="career_mobile.html">Careers</a></li>
+                    <li><a href="internship_mobile.html">Internships</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section id="career-heading" class="career-heading">
+                <center><h1 class="heading">CONTACT US </h1>
+                <p style="margin-bottom: 5rem;">Job Opening in IT Company. Apply Now!</p></center>
+            </section>
+            <div>
+        <div class="contact-container">
+            <h2>Have Some Questions?</h2>
+            <p>Submit the details, we will contact you</p>
+            <div class="office-container">
+                <div class="office-box">
+                    <h3>Head Office</h3>
+                    <p>509, 5th Floor, Pride Icon, Kharadi, Pune - 411014</p>
+                    <p>Email: infohorizons64gmail.com</p>
+                    <p>Contact: 9529288179 / 9607007009</p>
+                </div>
+                <div class="office-box">
+                    <h3>Corporate Office</h3>
+                    <p>303 Shoppers Plaza 4, Ahmedabad, Gujarat - 380009</p>
+                    <p>Email:infohorizons64gmail.com</p>
+                    <p>Contact: 9529288179</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="form-left">
+                    <h3>How Can We Help You?</h3>
+                    <p>Submit the details we will contact you.</p>
+                </div>
+                <div class="form-right">
+                    <form>
+                        <input type="text" placeholder="Enter your full name" required>
+                        <input type="email" placeholder="Enter your email" required>
+                        <input type="tel" placeholder="Enter your mobile number" required>
+                        <select>
+                            <option>What are you looking for?</option>
+                            <option>General Inquiry</option>
+                            <option>Internship</option>
+                            <option>Job Application</option>
+                        </select>
+                        <textarea placeholder="Describe your requirement briefly"></textarea>
+                        <button type="submit" class="submit-btn">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Map Container -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.265588856372!2d73.91455741541647!3d18.562068287384868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPhoenix%20Market%20City%20Pune!5e0!3m2!1sen!2sin!4v1622549405339!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
+                        <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="ion-logo-googleplus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/mobile-responsive.js"></script>
+</body>
+</html>

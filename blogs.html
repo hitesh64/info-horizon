@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Read INFO HORIZONS latest blogs on IT trends, web development, mobile apps, digital marketing, and technology insights.">
+    <meta name="keywords" content="blogs, IT blogs, web development blogs, mobile app blogs, digital marketing blogs, technology blogs">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="./images/infofull.jpg" as="image">
+    
+    <!-- Custom Blog Styles -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #333;
+            overflow-x: hidden;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .blogs-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 8rem;
+        }
+
+        .blogs-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .blogs-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            animation: slideIn 1.2s ease-in-out;
+        }
+
+        .blog-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            animation: fadeInUp 1s ease-in-out;
+            perspective: 1000px;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-card img {
+            width: 100%;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .blog-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .blog-card h2 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        .blog-card p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .blog-card button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .blog-card button:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .blog-details {
+            display: none;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .blog-details img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+
+        .user-form {
+            width: 80%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .user-form input, .user-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .user-form button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .user-form button:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            background-color: #E9EBF0;
+            padding: 30px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 10%;
+        }
+
+        .footer-logo img {
+            width: 120px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .footer-subscribe {
+            text-align: left;
+        }
+
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .subscribe-box input {
+            border: none;
+            padding: 10px;
+            flex: 1;
+            outline: none;
+        }
+
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-box button:hover {
+            background-color: #ff4d4d;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a img {
+            width: 25px;
+            margin: 0 5px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background: url('background.jpg') no-repeat center center/cover;
+            height: 400px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .parallax h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                    <li><a href="career_mobile.html">Careers</a></li>
+                    <li><a href="internship_mobile.html">Internships</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="parallax">
+            <h1>Discover the Future of Technology</h1>
+        </div>
+
+        <section class="blogs-section" id="blogList">
+            <h1>Explore Our Blogs</h1>
+            <p>Discover the latest trends and insights in technology.</p>
+            
+            <div class="blog-cards">
+                <div class="blog-card">
+                    <img src="web-dev.jpg" alt="Web Development">
+                    <h2>Web Development Trends</h2>
+                    <p>Explore the latest tools and frameworks for modern web development.</p>
+                    <button onclick="showDetails('web-dev')">Read More</button>
+                </div>
+                <div class="blog-card">
+                    <img src="cybersecurity.jpg" alt="SUMMER INTERSHIPS">
+                    <h2>SUMMER INTERSHIPS</h2>
+                    <p>Understand the importance of securing your digital assets.</p>
+                    <button onclick="showDetails('cybersecurity')">Read More</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="blog-details" id="web-dev">
+            <h1>Web Development Trends</h1>
+            <img src="web-dev-large.jpg" alt="Web Development Trends">
+            <p>Web development is evolving rapidly, with new frameworks and tools shaping the industry.</p>
+            <button class="back-btn" onclick="hideDetails()">Go Back</button>
+        </section>
+
+        <section class="blog-details" id="cybersecurity">
+            <h1>Cybersecurity</h1>
+            <img src="cybersecurity-large.jpg" alt="Cybersecurity">
+            <p>Cybersecurity is essential in protecting personal and business data from hackers and cyber threats.</p>
+            <button class="back-btn" onclick="hideDetails()">Go Back</button>
+        </section>
+
+        <section class="user-form">
+            <h2>Share Your Thoughts</h2>
+            <form onsubmit="submitForm(event)">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fab fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showDetails(blogId) {
+            document.getElementById('blogList').style.display = 'none';
+            document.getElementById(blogId).style.display = 'block';
+        }
+
+        function hideDetails() {
+            document.getElementById('blogList').style.display = 'block';
+            document.querySelectorAll('.blog-details').forEach(section => {
+                section.style.display = 'none';
+            });
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+            
+            alert(`Thank you, ${name}! We received your message.`);
+            document.querySelector('.user-form form').reset();
+        }
+    </script>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/mobile-responsive.js"></script>
+</body>
+</html>

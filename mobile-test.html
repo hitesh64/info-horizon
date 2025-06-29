@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test - INFO HORIZONS</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Test-specific styles */
+        body {
+            padding-top: 100px;
+            background: #f0f0f0;
+        }
+        
+        .test-content {
+            padding: 2rem;
+            background: white;
+            margin: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-button {
+            background: #007bff;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 1rem;
+        }
+        
+        .debug-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" style="height: 40px;">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="test-content">
+        <h1>Mobile Menu Test Page</h1>
+        <p>This page is designed to test the mobile menu functionality. Resize your browser window to mobile size (below 768px) to see the mobile menu.</p>
+        
+        <div class="debug-info" id="debug-info">
+            <strong>Debug Information:</strong><br>
+            Window width: <span id="window-width"></span><br>
+            Is mobile: <span id="is-mobile"></span><br>
+            Menu toggle found: <span id="toggle-found"></span><br>
+            Navigation found: <span id="nav-found"></span><br>
+            Menu state: <span id="menu-state">closed</span>
+        </div>
+        
+        <button class="test-button" onclick="testMenuToggle()">Test Menu Toggle</button>
+        <button class="test-button" onclick="showDebugInfo()">Show Debug Info</button>
+        
+        <h2>Test Instructions:</h2>
+        <ol>
+            <li>Resize your browser window to mobile size (below 768px width)</li>
+            <li>You should see a hamburger menu icon (☰) in the top right</li>
+            <li>Click the hamburger menu to open/close the mobile navigation</li>
+            <li>Click outside the menu or press ESC to close it</li>
+            <li>Click on any menu item to navigate and close the menu</li>
+        </ol>
+        
+        <h2>Expected Behavior:</h2>
+        <ul>
+            <li>Menu toggle button should be visible and clickable</li>
+            <li>Menu should slide down from the header when opened</li>
+            <li>Menu should slide up when closed</li>
+            <li>Body scroll should be locked when menu is open</li>
+            <li>Menu should close when clicking outside or pressing ESC</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./js/mobile-responsive.js"></script>
+    <script>
+        // Additional test functionality
+        function updateDebugInfo() {
+            document.getElementById('window-width').textContent = window.innerWidth + 'px';
+            document.getElementById('is-mobile').textContent = window.innerWidth <= 768 ? 'Yes' : 'No';
+            document.getElementById('toggle-found').textContent = document.getElementById('mobile-menu-toggle') ? 'Yes' : 'No';
+            document.getElementById('nav-found').textContent = document.getElementById('main-nav') ? 'Yes' : 'No';
+            
+            const nav = document.getElementById('main-nav');
+            if (nav) {
+                document.getElementById('menu-state').textContent = nav.classList.contains('active') ? 'open' : 'closed';
+            }
+        }
+        
+        function testMenuToggle() {
+            const toggle = document.getElementById('mobile-menu-toggle');
+            if (toggle) {
+                console.log('Manually triggering menu toggle...');
+                toggle.click();
+                setTimeout(updateDebugInfo, 100);
+            } else {
+                alert('Menu toggle button not found!');
+            }
+        }
+        
+        function showDebugInfo() {
+            updateDebugInfo();
+            console.log('=== DEBUG INFO ===');
+            console.log('Window width:', window.innerWidth);
+            console.log('Is mobile:', window.innerWidth <= 768);
+            console.log('Toggle element:', document.getElementById('mobile-menu-toggle'));
+            console.log('Nav element:', document.getElementById('main-nav'));
+            console.log('Header element:', document.querySelector('header'));
+            console.log('Font Awesome loaded:', !!document.querySelector('.fas'));
+            
+            const toggle = document.getElementById('mobile-menu-toggle');
+            if (toggle) {
+                const styles = getComputedStyle(toggle);
+                console.log('Toggle styles:', {
+                    display: styles.display,
+                    visibility: styles.visibility,
+                    opacity: styles.opacity,
+                    pointerEvents: styles.pointerEvents,
+                    cursor: styles.cursor,
+                    zIndex: styles.zIndex
+                });
+            }
+        }
+        
+        // Update debug info on load and resize
+        window.addEventListener('load', updateDebugInfo);
+        window.addEventListener('resize', updateDebugInfo);
+        
+        // Monitor menu state changes
+        const nav = document.getElementById('main-nav');
+        if (nav) {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        updateDebugInfo();
+                    }
+                });
+            });
+            
+            observer.observe(nav, {
+                attributes: true,
+                attributeFilter: ['class']
+            });
+        }
+        
+        // Initial debug info
+        setTimeout(updateDebugInfo, 1000);
+    </script>
+</body>
+</html> 

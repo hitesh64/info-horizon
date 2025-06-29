@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 400px;
+    }
+    .data-section {
+      margin-top: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HR Dashboard</h1>
+    <div class="data-section">
+      <h2>Internship Data</h2>
+      <ul id="internshipData"></ul>
+    </div>
+    <div class="data-section">
+      <h2>Career Data</h2>
+      <ul id="careerData"></ul>
+    </div>
+    <div class="data-section">
+      <h2>Contact Data</h2>
+      <ul id="contactData"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve and display data from localStorage
+    const internships = JSON.parse(localStorage.getItem('internships')) || [];
+    const careers = JSON.parse(localStorage.getItem('careers')) || [];
+    const contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+
+    // Display Internship Data
+    const internshipDataList = document.getElementById('internshipData');
+    internshipDataList.innerHTML = internships.map(intern => `
+      <li><strong>Name:</strong> ${intern.name}, <strong>Email:</strong> ${intern.email}, <strong>Course:</strong> ${intern.course}</li>
+    `).join('');
+
+    // Display Career Data
+    const careerDataList = document.getElementById('careerData');
+    careerDataList.innerHTML = careers.map(career => `
+      <li><strong>Name:</strong> ${career.name}, <strong>Email:</strong> ${career.email}, <strong>Position:</strong> ${career.position}</li>
+    `).join('');
+
+    // Display Contact Data
+    const contactDataList = document.getElementById('contactData');
+    contactDataList.innerHTML = contacts.map(contact => `
+      <li><strong>Name:</strong> ${contact.name}, <strong>Email:</strong> ${contact.email}, <strong>Phone:</strong> ${contact.phone}</li>
+    `).join('');
+  </script>
+</body>
+</html>

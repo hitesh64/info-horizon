@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internships - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Join INFO HORIZONS internship program. Gain hands-on experience in web development, mobile apps, digital marketing, and IT consulting.">
+    <meta name="keywords" content="internships, IT internships, web development internships, mobile development internships, digital marketing internships">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Internship Styles -->
+    <style>
+        /* Internship Page Specific Styles */
+        .internship-hero {
+            min-height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/infofull.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 8rem;
+        }
+
+        .internship-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .internship-hero p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .internship-section {
+            padding: 6rem 0;
+        }
+
+        .internship-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            border-left: 5px solid #002e5f;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .internship-card h3 {
+            color: #002e5f;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .internship-card .position {
+            font-size: 1.8rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .internship-card .duration {
+            font-size: 1.4rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .internship-card .description {
+            font-size: 1.6rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .internship-card .benefits {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .internship-card .benefits h4 {
+            color: #002e5f;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .internship-card .benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .internship-card .benefits li {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .internship-card .benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #002e5f;
+            font-weight: bold;
+        }
+
+        .apply-internship-btn {
+            background: #002e5f;
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-internship-btn:hover {
+            background: #001a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .no-internships {
+            text-align: center;
+            padding: 4rem 0;
+            color: #666;
+        }
+
+        .no-internships i {
+            font-size: 6rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .no-internships h3 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-internships p {
+            font-size: 1.6rem;
+        }
+
+        /* Internship Application Form Modal */
+        .internship-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .internship-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            margin: auto;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .internship-modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-header h3 {
+            color: #002e5f;
+            font-size: 2.4rem;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2.4rem;
+            color: #666;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #ff4444;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #002e5f;
+            box-shadow: 0 0 0 3px rgba(0, 46, 95, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-internship {
+            background: #002e5f;
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-internship:hover {
+            background: #001a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-upload-label {
+            display: block;
+            padding: 1.2rem;
+            border: 2px dashed #e1e5e9;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.4rem;
+            color: #666;
+        }
+
+        .file-upload-label:hover {
+            border-color: #002e5f;
+            background: rgba(0, 46, 95, 0.05);
+        }
+
+        /* Mobile Responsive for Internship Page */
+        @media (max-width: 768px) {
+            .internship-hero h1 {
+                font-size: 3rem;
+            }
+
+            .internship-hero p {
+                font-size: 1.6rem;
+            }
+
+            .internship-card {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .internship-card h3 {
+                font-size: 2rem;
+            }
+
+            .internship-card .position {
+                font-size: 1.6rem;
+            }
+
+            .internship-card .description {
+                font-size: 1.4rem;
+            }
+
+            .internship-card .benefits {
+                padding: 1.5rem;
+            }
+
+            .internship-card .benefits h4 {
+                font-size: 1.6rem;
+            }
+
+            .internship-card .benefits li {
+                font-size: 1.3rem;
+            }
+
+            .apply-internship-btn {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.4rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .internship-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .internship-hero p {
+                font-size: 1.4rem;
+            }
+
+            .internship-card {
+                padding: 1.5rem;
+            }
+
+            .internship-card h3 {
+                font-size: 1.8rem;
+            }
+
+            .apply-internship-btn {
+                padding: 1rem 2rem;
+                font-size: 1.3rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-header h3 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="career_mobile.html">Careers</a></li>
+                    <li><a href="internship_mobile.html" class="active">Internships</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Internship Hero Section -->
+    <section class="internship-hero">
+        <div class="container">
+            <h1>Internship Program</h1>
+            <p>Gain hands-on experience and learn from industry experts. Join our internship program and kickstart your career in technology.</p>
+        </div>
+    </section>
+
+    <!-- Internship Opportunities Section -->
+    <section class="internship-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Internships</h2>
+                <p>Explore exciting internship opportunities to grow your skills and experience</p>
+            </div>
+
+            <!-- Web Development Internship -->
+            <div class="internship-card">
+                <h3>Web Development Intern</h3>
+                <div class="position">Full-time Internship</div>
+                <div class="duration"><i class="fas fa-clock"></i> 3-6 months</div>
+                <div class="description">
+                    Learn modern web development technologies and work on real projects. Gain experience with HTML, CSS, JavaScript, and popular frameworks.
+                </div>
+                <div class="benefits">
+                    <h4>What You'll Learn:</h4>
+                    <ul>
+                        <li>Frontend development with modern frameworks</li>
+                        <li>Backend development and APIs</li>
+                        <li>Database design and management</li>
+                        <li>Version control with Git</li>
+                        <li>Agile development methodologies</li>
+                        <li>Project management and collaboration</li>
+                    </ul>
+                </div>
+                <button class="apply-internship-btn" onclick="openInternshipForm('Web Development Intern')">Apply Now</button>
+            </div>
+
+            <!-- Mobile Development Internship -->
+            <div class="internship-card">
+                <h3>Mobile Development Intern</h3>
+                <div class="position">Full-time Internship</div>
+                <div class="duration"><i class="fas fa-clock"></i> 3-6 months</div>
+                <div class="description">
+                    Work on mobile applications for iOS and Android platforms. Learn cross-platform development and mobile UI/UX design principles.
+                </div>
+                <div class="benefits">
+                    <h4>What You'll Learn:</h4>
+                    <ul>
+                        <li>React Native or Flutter development</li>
+                        <li>Mobile UI/UX design principles</li>
+                        <li>App store deployment and optimization</li>
+                        <li>Mobile testing and debugging</li>
+                        <li>Performance optimization techniques</li>
+                        <li>Mobile security best practices</li>
+                    </ul>
+                </div>
+                <button class="apply-internship-btn" onclick="openInternshipForm('Mobile Development Intern')">Apply Now</button>
+            </div>
+
+            <!-- Digital Marketing Internship -->
+            <div class="internship-card">
+                <h3>Digital Marketing Intern</h3>
+                <div class="position">Full-time Internship</div>
+                <div class="duration"><i class="fas fa-clock"></i> 3-6 months</div>
+                <div class="description">
+                    Learn digital marketing strategies and tools. Work on real campaigns and understand how to grow online presence for businesses.
+                </div>
+                <div class="benefits">
+                    <h4>What You'll Learn:</h4>
+                    <ul>
+                        <li>SEO and SEM strategies</li>
+                        <li>Social media marketing</li>
+                        <li>Content marketing and copywriting</li>
+                        <li>Google Analytics and reporting</li>
+                        <li>Email marketing campaigns</li>
+                        <li>Marketing automation tools</li>
+                    </ul>
+                </div>
+                <button class="apply-internship-btn" onclick="openInternshipForm('Digital Marketing Intern')">Apply Now</button>
+            </div>
+
+            <!-- UI/UX Design Internship -->
+            <div class="internship-card">
+                <h3>UI/UX Design Intern</h3>
+                <div class="position">Full-time Internship</div>
+                <div class="duration"><i class="fas fa-clock"></i> 3-6 months</div>
+                <div class="description">
+                    Create beautiful and functional user interfaces. Learn design principles, prototyping, and user research methodologies.
+                </div>
+                <div class="benefits">
+                    <h4>What You'll Learn:</h4>
+                    <ul>
+                        <li>Design tools (Figma, Adobe XD, Sketch)</li>
+                        <li>User research and usability testing</li>
+                        <li>Wireframing and prototyping</li>
+                        <li>Design systems and component libraries</li>
+                        <li>User-centered design principles</li>
+                        <li>Design-to-development handoff</li>
+                    </ul>
+                </div>
+                <button class="apply-internship-btn" onclick="openInternshipForm('UI/UX Design Intern')">Apply Now</button>
+            </div>
+
+            <!-- No Internships Available Message -->
+            <div class="no-internships" style="display: none;">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>No Internships Available</h3>
+                <p>We don't have any internship positions open at the moment, but we're always looking for talented students. Send us your resume and we'll keep you in mind for future opportunities.</p>
+                <a href="index.html#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Application Form Modal -->
+    <div class="internship-modal" id="internshipModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Apply for <span id="internshipTitle"></span></h3>
+                <button class="close-modal" onclick="closeInternshipForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form action="internship.php" method="POST" enctype="multipart/form-data" id="internshipForm">
+                <input type="hidden" name="internship_type" id="internshipType">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="intern_name">Full Name *</label>
+                        <input type="text" id="intern_name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intern_email">Email Address *</label>
+                        <input type="email" id="intern_email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="intern_phone">Phone Number *</label>
+                        <input type="tel" id="intern_phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intern_university">University/College *</label>
+                        <input type="text" id="intern_university" name="university" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="intern_course">Course/Program *</label>
+                        <input type="text" id="intern_course" name="course" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="intern_year">Year of Study *</label>
+                        <select id="intern_year" name="year" required>
+                            <option value="">Select year</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="Graduate">Graduate</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="intern_skills">Skills & Experience</label>
+                    <textarea id="intern_skills" name="skills" rows="4" placeholder="Tell us about your technical skills, projects, and relevant experience..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="intern_resume">Resume/CV *</label>
+                    <div class="file-upload">
+                        <input type="file" id="intern_resume" name="fileToUpload" accept=".pdf,.doc,.docx" required>
+                        <label for="intern_resume" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i><br>
+                            Click to upload your resume (PDF, DOC, DOCX)
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-internship">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>INFO HORIZONS</h4>
+                    <p>Your trusted partner for innovative IT solutions and digital transformation.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Web Development</a></li>
+                        <li><a href="index.html#services">Mobile Development</a></li>
+                        <li><a href="index.html#services">Digital Marketing</a></li>
+                        <li><a href="index.html#services">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="career_mobile.html">Careers</a></li>
+                        <li><a href="internship_mobile.html">Internships</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> info@infohorizons.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business St, City, Country</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 INFO HORIZONS PVT.LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/mobile-responsive.js"></script>
+    
+    <!-- Internship Application Script -->
+    <script>
+        // Internship Application Form Functions
+        function openInternshipForm(internship) {
+            document.getElementById('internshipTitle').textContent = internship;
+            document.getElementById('internshipType').value = internship;
+            document.getElementById('internshipModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInternshipForm() {
+            document.getElementById('internshipModal').classList.remove('show');
+            document.body.style.overflow = 'auto';
+            document.getElementById('internshipForm').reset();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('internshipModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeInternshipForm();
+            }
+        });
+
+        // File upload preview
+        document.getElementById('intern_resume').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const label = document.querySelector('.file-upload-label');
+            
+            if (file) {
+                label.innerHTML = `<i class="fas fa-check"></i><br>${file.name}`;
+                label.style.borderColor = '#00cc44';
+                label.style.background = 'rgba(0, 204, 68, 0.1)';
+            } else {
+                label.innerHTML = `<i class="fas fa-cloud-upload-alt"></i><br>Click to upload your resume (PDF, DOC, DOCX)`;
+                label.style.borderColor = '#e1e5e9';
+                label.style.background = 'transparent';
+            }
+        });
+
+        // Form validation
+        document.getElementById('internshipForm').addEventListener('submit', function(e) {
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff4444';
+                } else {
+                    field.style.borderColor = '#e1e5e9';
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeInternshipForm();
+            }
+        });
+    </script>
+</body>
+</html> 

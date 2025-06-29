@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO HORIZONS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <script src="./js/main.js"></script>
+    <script src="form.js"></script>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .header {
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .internship-card {
+        background: white;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    .internship-card img {
+        width: 50px;
+        height: 50px;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    /* Rotation and Mirroring Effect on Hover */
+    .internship-card:hover img {
+        transform: rotate(360deg) scaleX(-1); /* Rotate 360 degrees and mirror horizontally */
+    }
+
+    .internship-info {
+        text-align: left;
+        flex: 1;
+        padding: 0 15px;
+    }
+
+    .apply-btn {
+        background: #0033cc;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .apply-btn:hover {
+        background: #001a66;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #userForm {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        z-index: 1001;
+    }
+
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    #userForm {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background: white;
+        padding: 20px;
+        width: 350px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        z-index: 1001;
+        opacity: 0;
+        transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    }
+
+    .open-form {
+        display: block !important;
+        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+
+    .close-form {
+        opacity: 0 !important;
+        transform: translate(-50%, -50%) scale(0.8) !important;
+    }
+
+    .close-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        float: right;
+        transition: background 0.3s ease;
+    }
+
+    .close-btn:hover {
+        background: darkred;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border 0.3s ease-in-out;
+        font-size: 16px;
+    }
+
+    .form-input:focus {
+        border-color: #0033cc;
+        box-shadow: 0 0 8px rgba(0, 51, 204, 0.3);
+        outline: none;
+    }
+
+    .submit-btn {
+        background: #0033cc;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, background 0.3s;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .submit-btn:hover {
+        background: #001a66;
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    footer {
+        background-color: #E9EBF0;
+        padding: 30px 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        position: relative;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 0 10%;
+    }
+
+    .footer-logo img {
+        width: 120px;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+    }
+
+    .footer-section h4 {
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin: 5px 0;
+    }
+
+    .footer-section ul li a {
+        text-decoration: none;
+        color: #666;
+        transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+        color: #ff4d4d;
+    }
+
+    .footer-subscribe {
+        text-align: left;
+    }
+
+    .subscribe-box {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .subscribe-box input {
+        border: none;
+        padding: 10px;
+        flex: 1;
+        outline: none;
+    }
+
+    .subscribe-box button {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .subscribe-box button:hover {
+        background-color: #ff4d4d;
+    }
+
+    .social-icons {
+        margin-top: 10px;
+    }
+
+    .social-icons a img {
+        width: 25px;
+        margin: 0 5px;
+        transition: transform 0.3s;
+    }
+
+    .social-icons a img:hover {
+        transform: scale(1.2);
+    }
+
+    .footer-bottom {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #777;
+    }
+
+    .quote-button {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #ff4d4d;
+        padding: 15px;
+        writing-mode: vertical-rl;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        border-radius: 10px 0 0 10px;
+        transition: background 0.3s;
+    }
+
+    .quote-button:hover {
+        background: #e63939;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo img {
+    height: 65px;
+}
+
+/* Navigation Bar */
+nav {
+    position: absolute;
+    top: 50px; /* Moves navbar lower */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the navbar */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation List */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Links */
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+}
+
+/* Hover Effect */
+nav ul li a:hover,
+.active {
+    color: #c0392b;
+}
+
+/* Mobile Optimization */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    nav {
+        position: relative;
+        top: 0;
+        transform: none;
+        width: 100%;
+        background: white;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+ 
+</style>
+
+<script>
+    function openFormPage() {
+        var form = document.getElementById("userForm");
+        var overlay = document.getElementById("overlay");
+
+        form.classList.remove("close-form");
+        overlay.classList.remove("close-form");
+
+        form.classList.add("open-form");
+        overlay.style.display = "block";
+        setTimeout(() => {
+            overlay.style.opacity = "1";
+        }, 10);
+    }
+
+    function closeFormPage() {
+        var form = document.getElementById("userForm");
+        var overlay = document.getElementById("overlay");
+
+        form.classList.remove("open-form");
+        form.classList.add("close-form");
+
+        overlay.style.opacity = "0";
+        setTimeout(() => {
+            form.style.display = "none";
+            overlay.style.display = "none";
+        }, 400);
+    }
+    
+</script>
+
+<body>
+    <form action="internship.php" method="post">
+    <header>
+        <div class="logo">
+            <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="intershipPage.html">INTERTSHIP</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="career1.html">CAREER</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <li><a href="blogs.html">BLOGS</a></li>
+                 <li><a href="crp.html">CRP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <section id="career-heading" class="career-heading">
+            <h1 class="heading">INTERSHIPS</h1>
+            <p style="margin-bottom: 5rem;">Job Opening in IT Company. Apply Now!</p>
+        </section>
+        <div>
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png" alt="C Logo">
+                <div class="internship-info">
+                    <h3>C Internship</h3>
+                    <p>Step by step process for C interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+            </div>
+
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="C++ Logo">
+                <div class="internship-info">
+                    <h3>C++ Internship</h3>
+                    <p>Step by step process for C++ interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+            </div>
+
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+                    alt="Java Logo">
+                <div class="internship-info">
+                    <h3>Java Internship</h3>
+                    <p>Step by step process for Java interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+            </div>
+
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+                <div class="internship-info">
+                    <h3>Python Internship</h3>
+                    <p>Step by step process for Python interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+            </div>
+
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Logo">
+                <div class="internship-info">
+                    <h3>JavaScript Internship</h3>
+                    <p>Step by step process for JavaScript interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+            </div>
+
+            <div class="internship-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo">
+                <div class="internship-info">
+                    <h3>Android Internship</h3>
+                    <p>Step by step process for Android interns.</p>
+                </div>
+                <button class="apply-btn" onclick="openFormPage()">APPLY NOW</button>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
+                        <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i
+                                class="ion-logo-googleplus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <!-- Background Overlay -->
+    <div id="overlay"></div>
+
+    <!-- User Details Form (Hidden by Default) -->
+    <div id="userForm" class="form-container">
+        <button class="close-btn" onclick="closeFormPage()">X</button>
+        <h2>Internship Application</h2>
+        <form>
+            <input type="text" class="form-input" name="name" placeholder="Full Name" required>
+            <input type="email" class="form-input"  name="email" placeholder="Email" required>
+            <input type="tel" class="form-input"  name="contactno" placeholder="Contact No." required>
+            <input type="text" class="form-input" name="address" placeholder="Address" required>
+            <select class="form-input"  name="selectcity"required>
+                <option value="">Select City</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                              <option value="Mumbai">Mumbai</option>
+            </select>
+            <select class="form-input" name="tech"required>
+                <option value="">Select Technology</option>
+                <option value="Python">Python</option>
+                <option value="Django">Django</option>
+                <option value="Machine Learning">Machine Learning</option>
+            </select>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
+

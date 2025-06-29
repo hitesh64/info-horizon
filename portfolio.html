@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Explore INFO HORIZONS portfolio showcasing our successful projects in web development, mobile apps, digital marketing, and IT solutions.">
+    <meta name="keywords" content="portfolio, projects, web development projects, mobile app projects, digital marketing projects, IT solutions">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="./images/infofull.jpg" as="image">
+    
+    <!-- Custom Portfolio Styles -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .portfolio {
+            margin: 20px;
+            margin-top: 8rem;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        span {
+            color: #ff4d4d;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filters button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+        }
+
+        .filters button.active {
+            background-color: #ff4d4d;
+        }
+
+        .filters button:hover {
+            background-color: #ff6666;
+        }
+
+        .portfolio-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item {
+            width: 220px;
+            margin: 15px;
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation class */
+        .item.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        footer {
+            background-color: #E9EBF0;
+            padding: 30px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 10%;
+        }
+
+        .footer-logo img {
+            width: 120px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 5px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .footer-subscribe {
+            text-align: left;
+        }
+
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .subscribe-box input {
+            border: none;
+            padding: 10px;
+            flex: 1;
+            outline: none;
+        }
+
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-box button:hover {
+            background-color: #ff4d4d;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a img {
+            width: 25px;
+            margin: 0 5px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .quote-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff4d4d;
+            padding: 15px;
+            writing-mode: vertical-rl;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px 0 0 10px;
+            transition: background 0.3s;
+        }
+
+        .quote-button:hover {
+            background: #e63939;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .logo img {
+            height: 65px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: absolute;
+            top: 50px; /* Moves navbar lower */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the navbar */
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation List */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Links */
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+            padding: 10px 15px;
+        }
+
+        /* Hover Effect */
+        nav ul li a:hover,
+        .active {
+            color: #c0392b;
+        }
+
+        /* Mobile Optimization */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            nav {
+                position: relative;
+                top: 0;
+                transform: none;
+                width: 100%;
+                background: white;
+                padding: 10px 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                    <li><a href="career_mobile.html">Careers</a></li>
+                    <li><a href="internship_mobile.html">Internships</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <section id="career-heading" class="career-heading">
+                <h1 class="heading">PORTFOLIO</h1>
+                <p style="margin-bottom: 5rem;">Job Opening in IT Company. Apply Now!</p>
+            </section>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const buttons = document.querySelectorAll(".filters button");
+                    const items = document.querySelectorAll(".portfolio-items .item");
+
+                    buttons.forEach(button => {
+                        button.addEventListener("click", function () {
+                            const filter = this.getAttribute("data-filter");
+
+                            buttons.forEach(btn => btn.classList.remove("active"));
+                            this.classList.add("active");
+
+                            items.forEach(item => {
+                                if (filter === "all" || item.classList.contains(filter)) {
+                                    item.classList.add("show");
+                                } else {
+                                    item.classList.remove("show");
+                                }
+                            });
+                        });
+                    });
+
+                    document.querySelector('[data-filter="all"]').click();
+                });
+            </script>
+
+            <section class="portfolio">
+                <h2>Our <span>Portfolio</span></h2>
+                <p>Our work is distinguished amongst a wide variety. Below are a few of our projects.</p>
+                
+                <div class="filters">
+                    <button data-filter="all" class="active">ALL</button>
+                    <button data-filter="web">WEB</button>
+                    <button data-filter="mobile">MOBILE APPS</button>
+                    <button data-filter="branding">BRANDINGS</button>
+                </div>
+                
+                <div class="portfolio-items">
+                    <!-- Web Projects (15 images) -->
+                    <div class="item web"><img src="web1.jpg" alt="Web Project 1"></div>
+                    <div class="item web"><img src="web2.jpg" alt="Web Project 2"></div>
+                    <div class="item web"><img src="web3.jpg" alt="Web Project 3"></div>
+                    <div class="item web"><img src="web4.jpg" alt="Web Project 4"></div>
+                    <div class="item web"><img src="web5.jpg" alt="Web Project 5"></div>
+                    <div class="item web"><img src="web6.jpg" alt="Web Project 6"></div>
+                    <div class="item web"><img src="web7.jpg" alt="Web Project 7"></div>
+                    <div class="item web"><img src="web8.jpg" alt="Web Project 8"></div>
+                    <div class="item web"><img src="web9.jpg" alt="Web Project 9"></div>
+                    <div class="item web"><img src="web10.jpg" alt="Web Project 10"></div>
+                    <div class="item web"><img src="web11.jpg" alt="Web Project 11"></div>
+                    <div class="item web"><img src="web12.jpg" alt="Web Project 12"></div>
+                
+
+                    <!-- Mobile Projects (15 images) -->
+                    <div class="item mobile"><img src="mobile1.jpg" alt="Mobile Project 1"></div>
+                    <div class="item mobile"><img src="mobile2.jpg" alt="Mobile Project 2"></div>
+                    <div class="item mobile"><img src="mobile3.jpg" alt="Mobile Project 3"></div>
+                    <div class="item mobile"><img src="mobile4.jpg" alt="Mobile Project 4"></div>
+                    <div class="item mobile"><img src="mobile5.jpg" alt="Mobile Project 5"></div>
+                    <div class="item mobile"><img src="mobile6.jpg" alt="Mobile Project 6"></div>
+                    <div class="item mobile"><img src="mobile7.jpg" alt="Mobile Project 7"></div>
+                    <div class="item mobile"><img src="mobile8.jpg" alt="Mobile Project 8"></div>
+                    <div class="item mobile"><img src="mobile9.jpg" alt="Mobile Project 9"></div>
+                    <div class="item mobile"><img src="mobile10.jpg" alt="Mobile Project 10"></div>
+                    <div class="item mobile"><img src="mobile11.jpg" alt="Mobile Project 11"></div>
+                    <div class="item mobile"><img src="mobile12.jpg" alt="Mobile Project 12"></div>
+                  
+
+                    <!-- Branding Projects (15 images) -->
+                    <div class="item branding"><img src="branding1.jpg" alt="Branding Project 1"></div>
+                    <div class="item branding"><img src="branding2.jpg" alt="Branding Project 2"></div>
+                    <div class="item branding"><img src="branding3.jpg" alt="Branding Project 3"></div>
+                    <div class="item branding"><img src="branding4.jpg" alt="Branding Project 4"></div>
+                    <div class="item branding"><img src="branding5.jpg" alt="Branding Project 5"></div>
+                    <div class="item branding"><img src="branding6.jpg" alt="Branding Project 6"></div>
+                    <div class="item branding"><img src="branding7.jpg" alt="Branding Project 7"></div>
+                    <div class="item branding"><img src="branding8.jpg" alt="Branding Project 8"></div>
+                    <div class="item branding"><img src="branding9.jpg" alt="Branding Project 9"></div>
+                    <div class="item branding"><img src="branding10.jpg" alt="Branding Project 10"></div>
+                    <div class="item branding"><img src="branding11.jpg" alt="Branding Project 11"></div>
+                    <div class="item branding"><img src="branding12.jpg" alt="Branding Project 12"></div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="ion-logo-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="ion-logo-instagram"></i></a>
+                        <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i
+                                class="ion-logo-googleplus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/mobile-responsive.js"></script>
+</body>
+</html>

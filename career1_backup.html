@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Join INFO HORIZONS team. Explore exciting career opportunities in IT, web development, mobile apps, and digital marketing.">
+    <meta name="keywords" content="careers, jobs, IT jobs, web development jobs, mobile development, digital marketing jobs">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Career Styles -->
+    <style>
+        /* Career Page Specific Styles */
+        .career-hero {
+            min-height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/infofull.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 8rem;
+        }
+
+        .career-hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .career-hero p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .career-section {
+            padding: 6rem 0;
+        }
+
+        .career-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            border-left: 5px solid #002e5f;
+        }
+
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .career-card h3 {
+            color: #002e5f;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .career-card .position {
+            font-size: 1.8rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .career-card .location {
+            font-size: 1.4rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .career-card .description {
+            font-size: 1.6rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .career-card .requirements {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .career-card .requirements h4 {
+            color: #002e5f;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .career-card .requirements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .career-card .requirements li {
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .career-card .requirements li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #002e5f;
+            font-weight: bold;
+        }
+
+        .apply-career-btn {
+            background: #002e5f;
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-career-btn:hover {
+            background: #001a3d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .no-jobs {
+            text-align: center;
+            padding: 4rem 0;
+            color: #666;
+        }
+
+        .no-jobs i {
+            font-size: 6rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+        }
+
+        .no-jobs h3 {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .no-jobs p {
+            font-size: 1.6rem;
+        }
+
+        /* Mobile Responsive for Career Page */
+        @media (max-width: 768px) {
+            .career-hero h1 {
+                font-size: 3rem;
+            }
+
+            .career-hero p {
+                font-size: 1.6rem;
+            }
+
+            .career-card {
+                padding: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .career-card h3 {
+                font-size: 2rem;
+            }
+
+            .career-card .position {
+                font-size: 1.6rem;
+            }
+
+            .career-card .description {
+                font-size: 1.4rem;
+            }
+
+            .career-card .requirements {
+                padding: 1.5rem;
+            }
+
+            .career-card .requirements h4 {
+                font-size: 1.6rem;
+            }
+
+            .career-card .requirements li {
+                font-size: 1.3rem;
+            }
+
+            .apply-career-btn {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .career-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .career-hero p {
+                font-size: 1.4rem;
+            }
+
+            .career-card {
+                padding: 1.5rem;
+            }
+
+            .career-card h3 {
+                font-size: 1.8rem;
+            }
+
+            .apply-career-btn {
+                padding: 1rem 2rem;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#portfolio">Portfolio</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="career1.html" class="active">Careers</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Career Hero Section -->
+    <section class="career-hero">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p>Be part of an innovative team that's shaping the future of technology. Explore exciting career opportunities at INFO HORIZONS.</p>
+        </div>
+    </section>
+
+    <!-- Career Opportunities Section -->
+    <section class="career-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Openings</h2>
+                <p>Discover opportunities that match your skills and passion</p>
+            </div>
+
+            <!-- Senior Web Developer -->
+            <div class="career-card">
+                <h3>Senior Web Developer</h3>
+                <div class="position">Full-time Position</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Remote / Hybrid</div>
+                <div class="description">
+                    We are looking for an experienced Senior Web Developer to join our dynamic team. You will be responsible for developing and maintaining high-quality web applications using modern technologies.
+                </div>
+                <div class="requirements">
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>5+ years of experience in web development</li>
+                        <li>Proficient in HTML, CSS, JavaScript, and modern frameworks</li>
+                        <li>Experience with React, Angular, or Vue.js</li>
+                        <li>Knowledge of backend technologies (Node.js, PHP, Python)</li>
+                        <li>Experience with databases (MySQL, MongoDB)</li>
+                        <li>Strong problem-solving and communication skills</li>
+                    </ul>
+                </div>
+                <a href="careers.php" class="apply-career-btn">Apply Now</a>
+            </div>
+
+            <!-- Mobile App Developer -->
+            <div class="career-card">
+                <h3>Mobile App Developer</h3>
+                <div class="position">Full-time Position</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Remote / Hybrid</div>
+                <div class="description">
+                    Join our mobile development team to create innovative and user-friendly mobile applications for iOS and Android platforms.
+                </div>
+                <div class="requirements">
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>3+ years of mobile app development experience</li>
+                        <li>Proficient in React Native, Flutter, or native development</li>
+                        <li>Experience with iOS (Swift) and Android (Kotlin/Java)</li>
+                        <li>Knowledge of mobile UI/UX principles</li>
+                        <li>Experience with app store deployment</li>
+                        <li>Strong debugging and testing skills</li>
+                    </ul>
+                </div>
+                <a href="careers.php" class="apply-career-btn">Apply Now</a>
+            </div>
+
+            <!-- Digital Marketing Specialist -->
+            <div class="career-card">
+                <h3>Digital Marketing Specialist</h3>
+                <div class="position">Full-time Position</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Remote / Hybrid</div>
+                <div class="description">
+                    Help our clients grow their online presence through strategic digital marketing campaigns and innovative marketing solutions.
+                </div>
+                <div class="requirements">
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>2+ years of digital marketing experience</li>
+                        <li>Proficient in SEO, SEM, and social media marketing</li>
+                        <li>Experience with Google Analytics and marketing tools</li>
+                        <li>Knowledge of content marketing strategies</li>
+                        <li>Experience with email marketing campaigns</li>
+                        <li>Strong analytical and creative skills</li>
+                    </ul>
+                </div>
+                <a href="careers.php" class="apply-career-btn">Apply Now</a>
+            </div>
+
+            <!-- UI/UX Designer -->
+            <div class="career-card">
+                <h3>UI/UX Designer</h3>
+                <div class="position">Full-time Position</div>
+                <div class="location"><i class="fas fa-map-marker-alt"></i> Remote / Hybrid</div>
+                <div class="description">
+                    Create beautiful and intuitive user experiences for web and mobile applications. Work closely with development teams to bring designs to life.
+                </div>
+                <div class="requirements">
+                    <h4>Requirements:</h4>
+                    <ul>
+                        <li>3+ years of UI/UX design experience</li>
+                        <li>Proficient in Figma, Adobe XD, or Sketch</li>
+                        <li>Strong understanding of user-centered design principles</li>
+                        <li>Experience with prototyping and user testing</li>
+                        <li>Knowledge of design systems and component libraries</li>
+                        <li>Portfolio showcasing web and mobile design work</li>
+                    </ul>
+                </div>
+                <a href="careers.php" class="apply-career-btn">Apply Now</a>
+            </div>
+
+            <!-- No Jobs Available Message -->
+            <div class="no-jobs" style="display: none;">
+                <i class="fas fa-briefcase"></i>
+                <h3>No Open Positions</h3>
+                <p>We don't have any open positions at the moment, but we're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.</p>
+                <a href="index.html#contact" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>INFO HORIZONS</h4>
+                    <p>Your trusted partner for innovative IT solutions and digital transformation.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index.html#services">Web Development</a></li>
+                        <li><a href="index.html#services">Mobile Development</a></li>
+                        <li><a href="index.html#services">Digital Marketing</a></li>
+                        <li><a href="index.html#services">IT Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +1 234 567 8900</li>
+                        <li><i class="fas fa-envelope"></i> careers@infohorizons.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business St, City, Country</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 INFO HORIZONS PVT.LTD. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="form.js"></script>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Career card animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const careerCards = document.querySelectorAll('.career-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            careerCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>

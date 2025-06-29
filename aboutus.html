@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - INFO HORIZONS PVT.LTD</title>
+    
+    <!-- Meta tags for SEO and mobile -->
+    <meta name="description" content="Learn more about INFO HORIZONS PVT.LTD - Leading IT solutions provider with years of experience in web development, mobile apps, and digital marketing.">
+    <meta name="keywords" content="about us, INFO HORIZONS, IT company, web development company, mobile app development, digital marketing">
+    <meta name="author" content="INFO HORIZONS PVT.LTD">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/image.png" type="image/png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/mobile-enhancements.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="./images/infofull.jpg" as="image">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <img src="./images/image.png" alt="INFO HORIZONS Logo" class="responsive-img">
+            </div>
+            
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutus.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                    <li><a href="career_mobile.html">Careers</a></li>
+                    <li><a href="internship_mobile.html">Internships</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 8rem;">
+    <div class="parallax">
+        <h1>About INFO HORIZONS</h1>
+    </div>
+
+    <section class="content">
+        <div class="info">
+            <img src=".\images\infoab.jpg" alt="About INFO HORIZONS PVT LTD" class="small">
+            <p>INFO HORIZONS Pvt. Ltd. is your top choice for professional WordPress development, website design, SEO, and digital marketing services.</p>
+            <p>We specialize in Android app development and various web solutions tailored to business needs.</p>
+            <button class="button" onclick="toggleSection('moreInfo')">Read More</button>
+            <div id="moreInfo" class="hidden">
+                <p>Our expertise extends to cutting-edge cloud solutions, AI-driven analytics, and seamless digital transformation services.</p>
+                <img src="more-about.jpg" alt="More About Us" class="small">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Our Vision & Mission</h2>
+        <img src="vision-mission.jpg" alt="Vision & Mission" class="small">
+        <p>Our vision is to empower businesses with cutting-edge digital solutions. Our mission is to provide innovative, reliable, and scalable technology services.</p>
+    </section>
+
+    <section class="section">
+        <h2>Why Choose Us?</h2>
+        <img src="why-choose-us.jpg" alt="Why Choose Us" class="small">
+        <ul>
+            <li>Experienced Professionals</li>
+            <li>Custom-Tailored Solutions</li>
+            <li>Client-Centric Approach</li>
+            <li>Innovative and Scalable Technologies</li>
+        </ul>
+        <button class="button" onclick="toggleSection('moreReasons')">Learn More</button>
+        <div id="moreReasons" class="hidden">
+            <p>We also offer 24/7 customer support, cutting-edge AI solutions, and a commitment to continuous innovation.</p>
+            <img src="additional-info.jpg" alt="Additional Information" class="small">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src=".\images\infofull.jpg" alt="Maxgen Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://accounts.google.com/servicelogin/signinchooser?flowName=GlifWebSignIn&flowEntry=ServiceLogin"><i class="fab fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSection(id) {
+            var section = document.getElementById(id);
+            if (section.classList.contains('hidden')) {
+                section.style.height = section.scrollHeight + "px";
+                section.style.opacity = "1";
+                section.classList.remove('hidden');
+            } else {
+                section.style.height = "0";
+                section.style.opacity = "0";
+                setTimeout(() => section.classList.add('hidden'), 500);
+            }
+        }
+    </script>
+    </main>
+    
+    <!-- JavaScript Files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/mobile-responsive.js"></script>
+</body>
+</html>
