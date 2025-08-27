@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO HORIZONS - Blogs</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #333;
+            overflow-x: hidden;
+            animation: fadeIn 1s ease-in;
+            padding-top: 120px; /* Space for fixed header */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        /* Logo */
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: #333;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation List */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Links */
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease-in-out;
+            padding: 8px 12px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        /* Hover Effect */
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #c0392b;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Main Content */
+        .parallax {
+            background: url('https://placehold.co/1200x600/6a11cb/white?text=Technology+Blog') no-repeat center center/cover;
+            height: 300px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin: 0 20px;
+            border-radius: 12px;
+        }
+
+        .parallax h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .blogs-section {
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blogs-section h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .blogs-section p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+            animation: slideIn 1.2s ease-in-out;
+        }
+
+        .blog-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            animation: fadeInUp 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-card h2 {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .blog-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 2;
+        }
+
+        .blog-card button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            align-self: center;
+        }
+
+        .blog-card button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .blog-details {
+            display: none;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .blog-details img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+        }
+
+        .user-form {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .user-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .user-form input, .user-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .user-form input:focus, .user-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .user-form button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
+        }
+
+        .user-form button:hover {
+            background: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #E9EBF0;
+            padding: 30px 0;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 5%;
+        }
+
+        .footer-logo img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            margin: 10px 15px;
+            min-width: 150px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .footer-subscribe {
+            text-align: left;
+            margin: 10px 15px;
+        }
+
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .subscribe-box input {
+            border: none;
+            padding: 10px;
+            flex: 1;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-box button:hover {
+            background-color: #ff4d4d;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            margin: 0 8px;
+            color: #333;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff4d4d;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+            padding: 0 20px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 1024px) {
+            header {
+                padding: 15px 4%;
+            }
+            
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav ul li a {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            header {
+                padding: 12px 4%;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 15px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+            
+            .parallax {
+                height: 250px;
+                margin: 0 15px;
+            }
+            
+            .parallax h1 {
+                font-size: 2rem;
+            }
+            
+            .blogs-section {
+                padding: 30px 15px;
+                margin: 15px;
+            }
+            
+            .blogs-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .blog-cards {
+                gap: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-section {
+                margin: 15px 0;
+            }
+            
+            .footer-subscribe {
+                text-align: center;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding-top: 90px;
+            }
+            
+            header {
+                padding: 10px 4%;
+            }
+            
+            .logo img {
+                height: 35px;
+            }
+            
+            .parallax {
+                height: 200px;
+            }
+            
+            .parallax h1 {
+                font-size: 1.6rem;
+            }
+            
+            .blogs-section {
+                padding: 20px 10px;
+                margin: 10px;
+            }
+            
+            .blogs-section h1 {
+                font-size: 1.5rem;
+            }
+            
+            .blog-card {
+                padding: 15px;
+            }
+            
+            .blog-image {
+                height: 160px;
+            }
+            
+            .user-form {
+                padding: 20px;
+            }
+            
+            .footer-bottom {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Info Horizons Logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="intershipPage.html">INTERNSHIP</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="career1.html">CAREER</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <li><a href="blogs.html" class="active">BLOGS</a></li>
+                <li><a href="crp.html">CRP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="parallax">
+        <h1>Discover the Future of Technology</h1>
+    </div>
+
+    <section class="blogs-section" id="blogList">
+        <h1>Explore Our Blogs</h1>
+        <p>Discover the latest trends and insights in technology.</p>
+        
+        <div class="blog-cards">
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/600x400/007bff/white?text=Web+Development" alt="Web Development">
+                </div>
+                <h2>Web Development Trends</h2>
+                <p>Explore the latest tools and frameworks for modern web development in 2023 and beyond.</p>
+                <button onclick="showDetails('web-dev')">Read More</button>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/600x400/28a745/white?text=Internships" alt="SUMMER INTERNSHIPS">
+                </div>
+                <h2>SUMMER INTERNSHIPS</h2>
+                <p>Learn about our exciting summer internship programs and how to apply for them.</p>
+                <button onclick="showDetails('internships')">Read More</button>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">
+                    <img src="https://placehold.co/600x400/dc3545/white?text=Cybersecurity" alt="Cybersecurity">
+                </div>
+                <h2>Cybersecurity Essentials</h2>
+                <p>Understand the importance of securing your digital assets in an increasingly connected world.</p>
+                <button onclick="showDetails('cybersecurity')">Read More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-details" id="web-dev">
+        <h1>Web Development Trends</h1>
+        <img src="https://placehold.co/800x400/007bff/white?text=Web+Development+Trends" alt="Web Development Trends">
+        <p>Web development is evolving rapidly, with new frameworks and tools shaping the industry. In 2023, we're seeing increased adoption of Jamstack architecture, serverless functions, and AI-powered development tools. Progressive Web Apps (PWAs) continue to gain traction, offering app-like experiences through browsers.</p>
+        <p>Frameworks like Next.js and SvelteKit are becoming more popular for their performance benefits and developer experience. Meanwhile, WebAssembly is opening new possibilities for running high-performance applications in the browser.</p>
+        <button class="back-btn" onclick="hideDetails()">Go Back</button>
+    </section>
+
+    <section class="blog-details" id="internships">
+        <h1>SUMMER INTERNSHIPS</h1>
+        <img src="https://placehold.co/800x400/28a745/white?text=Summer+Internships+2023" alt="Summer Internships">
+        <p>Our summer internship program offers hands-on experience in various technology domains. Interns work on real projects under the guidance of experienced mentors, gaining valuable skills and industry insights.</p>
+        <p>We offer internships in web development, mobile app development, data science, cybersecurity, and digital marketing. The program includes training sessions, workshops, and networking opportunities with industry professionals.</p>
+        <button class="back-btn" onclick="hideDetails()">Go Back</button>
+    </section>
+
+    <section class="blog-details" id="cybersecurity">
+        <h1>Cybersecurity Essentials</h1>
+        <img src="https://placehold.co/800x400/dc3545/white?text=Cybersecurity+Essentials" alt="Cybersecurity">
+        <p>Cybersecurity is essential in protecting personal and business data from hackers and cyber threats. With the increasing sophistication of cyber attacks, organizations need to implement multi-layered security strategies.</p>
+        <p>Key practices include regular software updates, employee training, multi-factor authentication, and robust incident response plans. Emerging technologies like AI and machine learning are also being leveraged to detect and prevent threats in real-time.</p>
+        <button class="back-btn" onclick="hideDetails()">Go Back</button>
+    </section>
+
+    <section class="user-form">
+        <h2>Share Your Thoughts</h2>
+        <form onsubmit="submitForm(event)">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Info Horizons Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://accounts.google.com/" aria-label="Google"><i class="fab fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+        
+        // Show blog details
+        function showDetails(blogId) {
+            document.getElementById('blogList').style.display = 'none';
+            document.getElementById(blogId).style.display = 'block';
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Hide blog details
+        function hideDetails() {
+            document.getElementById('blogList').style.display = 'block';
+            document.querySelectorAll('.blog-details').forEach(section => {
+                section.style.display = 'none';
+            });
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let message = document.getElementById('message').value;
+            
+            alert(`Thank you, ${name}! We received your message.`);
+            document.querySelector('.user-form form').reset();
+        }
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('nav-menu').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>

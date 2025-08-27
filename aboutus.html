@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO HORIZONS - About Us</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ffffff, #f3f4f6, #e3e4e6, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+            padding-top: 100px; /* Added to prevent content from being hidden under fixed header */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        /* Blue Line */
+        .blue-line {
+            height: 5px;
+            background-color: #007BFF;
+            width: 100%;
+            position: fixed;
+            top: 80px; /* Adjust based on header height */
+            left: 0;
+            z-index: 999;
+        }
+
+        /* Logo */
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Navigation List */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Links */
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s ease-in-out;
+            padding: 8px 12px;
+            display: block;
+        }
+
+        /* Hover Effect */
+        nav ul li a:hover,
+        .active {
+            color: #c0392b;
+        }
+
+        /* Hero Section */
+        .parallax {
+            background: url('https://placehold.co/1200x600/007BFF/FFFFFF/png?text=INFO+HORIZONS') no-repeat center center/cover;
+            height: 300px;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .parallax h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Content Sections */
+        .content, .section {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        .info img, .section img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .info img:hover, .section img:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+
+        .button {
+            background: #007BFF;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            margin: 15px 0;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        /* List styling */
+        .section ul {
+            text-align: left;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        .section ul li {
+            margin: 10px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #E9EBF0;
+            padding: 30px 0;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 0 5%;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            flex: 1 1 100%;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 120px;
+            max-width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 8px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff4d4d;
+        }
+
+        .footer-subscribe {
+            text-align: center;
+            flex: 1 1 300px;
+        }
+
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subscribe-box input {
+            border: none;
+            padding: 10px;
+            flex: 1;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-box button:hover {
+            background-color: #ff4d4d;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 8px;
+            color: #333;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: #007BFF;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+            padding: 0 20px;
+        }
+
+        /* Mobile Optimization */
+        @media screen and (max-width: 1024px) {
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav ul li a {
+                font-size: 13px;
+                padding: 6px 10px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding-top: 130px;
+            }
+            
+            header {
+                padding: 10px 5%;
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 10px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .blue-line {
+                top: 115px;
+            }
+            
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            nav {
+                width: 100%;
+                display: none;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+                margin-top: 10px;
+            }
+            
+            nav ul li a {
+                padding: 10px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .parallax {
+                height: 200px;
+                background-attachment: scroll;
+            }
+            
+            .parallax h1 {
+                font-size: 2rem;
+            }
+            
+            .content, .section {
+                padding: 20px 15px;
+                margin: 15px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-section {
+                text-align: center;
+                flex: 1 1 100%;
+            }
+            
+            .footer-subscribe {
+                text-align: center;
+            }
+            
+            .subscribe-box {
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .parallax h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content, .section {
+                padding: 15px 10px;
+                margin: 10px;
+            }
+            
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="INFO HORIZONS Logo">
+        </div>
+        
+        <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="intershipPage.html">INTERNSHIP</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="career1.html">CAREER</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <li><a href="blogs.html">BLOGS</a></li>
+                <li><a href="crp.html">CRP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blue Line -->
+    <div class="blue-line"></div>
+
+    <div class="parallax">
+        <h1>About INFO HORIZONS</h1>
+    </div>
+
+    <section class="content">
+        <div class="info">
+            <img src="https://placehold.co/300x200/007BFF/FFFFFF/png?text=Our+Team" alt="About INFO HORIZONS PVT LTD" class="small">
+            <p>INFO HORIZONS Pvt. Ltd. is your top choice for professional WordPress development, website design, SEO, and digital marketing services.</p>
+            <p>We specialize in Android app development and various web solutions tailored to business needs.</p>
+            <button class="button" onclick="toggleSection('moreInfo')">Read More</button>
+            <div id="moreInfo" class="hidden">
+                <p>Our expertise extends to cutting-edge cloud solutions, AI-driven analytics, and seamless digital transformation services.</p>
+                <img src="https://placehold.co/300x200/007BFF/FFFFFF/png?text=More+About+Us" alt="More About Us" class="small">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Our Vision & Mission</h2>
+        <img src="https://placehold.co/300x200/007BFF/FFFFFF/png?text=Vision+Mission" alt="Vision & Mission" class="small">
+        <p>Our vision is to empower businesses with cutting-edge digital solutions. Our mission is to provide innovative, reliable, and scalable technology services.</p>
+    </section>
+
+    <section class="section">
+        <h2>Why Choose Us?</h2>
+        <img src="https://placehold.co/300x200/007BFF/FFFFFF/png?text=Why+Choose+Us" alt="Why Choose Us" class="small">
+        <ul>
+            <li>Experienced Professionals</li>
+            <li>Custom-Tailored Solutions</li>
+            <li>Client-Centric Approach</li>
+            <li>Innovative and Scalable Technologies</li>
+        </ul>
+        <button class="button" onclick="toggleSection('moreReasons')">Learn More</button>
+        <div id="moreReasons" class="hidden">
+            <p>We also offer 24/7 customer support, cutting-edge AI solutions, and a commitment to continuous innovation.</p>
+            <img src="https://placehold.co/300x200/007BFF/FFFFFF/png?text=Additional+Info" alt="Additional Information" class="small">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://placehold.co/120x40/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="INFO HORIZONS Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://accounts.google.com/"><i class="fab fa-google-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSection(id) {
+            var section = document.getElementById(id);
+            if (section.classList.contains('hidden')) {
+                section.style.height = section.scrollHeight + "px";
+                section.style.opacity = "1";
+                section.classList.remove('hidden');
+            } else {
+                section.style.height = "0";
+                section.style.opacity = "0";
+                setTimeout(() => section.classList.add('hidden'), 500);
+            }
+        }
+        
+        // Mobile menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            var nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+            
+            // Change icon
+            var icon = this.querySelector('i');
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            var nav = document.getElementById('nav');
+            var hamburger = document.getElementById('hamburger');
+            
+            if (!nav.contains(event.target) && !hamburger.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                var icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
+</body>
+</html>
