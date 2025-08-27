@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - INFO HORIZONS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a11cb;
+            --secondary-color: #2575fc;
+            --highlight-color: #ff4d4d;
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --white: #fff;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .logo img {
+            height: 50px;
+            transition: var(--transition);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 10px 15px;
+            transition: var(--transition);
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--highlight-color);
+            background: rgba(255, 77, 77, 0.1);
+        }
+        
+        .active {
+            color: var(--highlight-color);
+            background: rgba(255, 77, 77, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 20px 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        /* Sticky Buttons */
+        .top-buttons-container {
+            position: sticky;
+            top: 80px;
+            z-index: 998;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        
+        .top-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 0;
+        }
+        
+        .scroll-btn {
+            padding: 12px 20px;
+            background: var(--highlight-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(255, 77, 77, 0.3);
+        }
+        
+        .scroll-btn:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 77, 77, 0.4);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 80px 0;
+            text-align: center;
+            background: var(--bg-light);
+        }
+        
+        .why-choose h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .why-choose h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--highlight-color);
+            border-radius: 2px;
+        }
+        
+        .reasons {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .reason {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .reason:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reason h3 {
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .reason p {
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+            background: white;
+            margin-bottom: 40px;
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .service-item h3 {
+            font-size: 1.8rem;
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+        }
+        
+        .service-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--highlight-color);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #bdc3c7;
+            transition: var(--transition);
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--highlight-color);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            font-size: 0.9rem;
+            color: #95a5a6;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Nav */
+        .fa-bars { 
+            display: block; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            z-index: 1001; 
+            transition: var(--transition);
+        }
+        
+        .fa-bars:hover {
+            color: var(--highlight-color);
+        }
+        
+        nav { 
+            display: none; 
+        }
+        
+        header.nav-open nav { 
+            display: flex; 
+            position: absolute; 
+            top: 80px; 
+            left: 0; 
+            width: 100%; 
+            background: var(--white); 
+            flex-direction: column; 
+            padding: 20px; 
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        header.nav-open nav ul { 
+            flex-direction: column; 
+            width: 100%; 
+            text-align: center; 
+            gap: 0;
+        }
+        
+        header.nav-open nav ul li {
+            width: 100%;
+        }
+        
+        header.nav-open nav ul li a {
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .logo img { 
+                height: 60px; 
+            }
+            
+            .fa-bars { 
+                display: none; 
+            }
+            
+            nav { 
+                display: block; 
+            }
+            
+            .hero {
+                padding: 180px 20px 100px;
+            }
+            
+            .hero h1 { 
+                font-size: 3.5rem; 
+            }
+            
+            .reasons { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            
+            .service-item { 
+                flex-direction: row; 
+                text-align: left; 
+            }
+            
+            .service-item img { 
+                order: 0; 
+                flex: 1;
+            }
+            
+            .service-item > div {
+                flex: 2;
+            }
+            
+            .service-item.reverse { 
+                flex-direction: row-reverse; 
+            }
+            
+            .footer-container { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                align-items: flex-start; 
+                text-align: left; 
+            }
+            
+            .footer-links { 
+                flex-direction: row; 
+                justify-content: space-between; 
+                width: 70%; 
+            }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 767px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            header {
+                padding: 12px 4%;
+            }
+            
+            .hero {
+                padding: 130px 15px 70px;
+                margin-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .top-buttons {
+                gap: 8px;
+            }
+            
+            .scroll-btn {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .why-choose, .services {
+                padding: 60px 0;
+            }
+            
+            .reason, .service-item {
+                padding: 20px;
+            }
+            
+            .service-item h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Small Mobile Optimization */
+        @media (max-width: 480px) {
+            .scroll-btn {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+            
+            .scroll-btn i {
+                font-size: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .why-choose h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-item h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Logo"></a>
+        </div>
+        <i class="fas fa-bars"></i>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="services.html" class="active">SERVICES</a></li>
+                <li><a href="intershipPage.html">INTERNSHIP</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="career1.html">CAREER</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <li><a href="blogs.html">BLOGS</a></li>
+                <li><a href="crp.html">CRP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Our Services</h1>
+        <p>Expert solutions tailored to your business needs</p>
+    </div>
+
+    <div class="top-buttons-container">
+        <div class="container">
+            <div class="top-buttons">
+                <a href="#webDesign" class="scroll-btn"><i class="fas fa-laptop-code"></i>Web Design</a>
+                <a href="#mobileApp" class="scroll-btn"><i class="fas fa-mobile-alt"></i>Mobile Apps</a>
+                <a href="#logoDesign" class="scroll-btn"><i class="fas fa-palette"></i>Graphic Design</a>
+                <a href="#support" class="scroll-btn"><i class="fas fa-tools"></i>Support</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="why-choose">
+            <div class="container">
+                <h2>Why Choose INFO HORIZONS?</h2>
+                <div class="reasons">
+                    <div class="reason">
+                        <h3>Design Thinking</h3>
+                        <p>Our solution architects analyze issues from the ground up to provide the best, most efficient solutions.</p>
+                    </div>
+                    <div class="reason">
+                        <h3>Domain Expertise</h3>
+                        <p>We understand the unique problems of your sector and apply creative design thinking to solve them.</p>
+                    </div>
+                    <div class="reason">
+                        <h3>Proven Client Experience</h3>
+                        <p>We build strong business engagements that ensure high returns and long-term success for our clients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="services-list">
+             <div class="container">
+                <div class="service-item" id="webDesign">
+                    <img src="images/Serweb.jpg" alt="Web Design">
+                    <div>
+                        <h3>Web Design & Development</h3>
+                        <p>We specialize in creating modern, responsive websites with advanced technologies. From single-page sites to complex e-commerce platforms, we build digital experiences that engage and convert. Our team ensures your website is optimized for performance, accessibility, and search engines.</p>
+                    </div>
+                </div>
+                <div class="service-item reverse" id="mobileApp">
+                    <img src="images/Sermob.jpg" alt="Mobile App">
+                    <div>
+                        <h3>Mobile App Development</h3>
+                        <p>No matter the OS platform, we can create powerful and scalable mobile applications tailored to meet your needs, ensuring a seamless user experience on any device. We follow industry best practices to deliver apps that are intuitive, fast, and reliable.</p>
+                    </div>
+                </div>
+                <div class="service-item" id="logoDesign">
+                    <img src="images/sergra.png" alt="Logo Design">
+                    <div>
+                        <h3>Logo & Graphic Design</h3>
+                        <p>We blend innovation, aesthetics, and outstanding user experiences to create a strong brand identity that inspires customer loyalty at every online touchpoint. Our designs communicate your brand's values and help you stand out in a competitive market.</p>
+                    </div>
+                </div>
+                <div class="service-item reverse" id="support">
+                    <img src="images/Serre.jpg" alt="Support">
+                    <div>
+                        <h3>Support & Maintenance</h3>
+                        <p>Our first objective is problem prevention. We take proactive steps to ensure your website's security, optimization, and regular updates, averting issues before they arise. Our support team is available to address any concerns and keep your digital assets running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-logo">
+                    <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Logo"></div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="intershipPage.html">Internship</a></li>
+                            <li><a href="blogs.html">Blogs</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="aboutus.html">About</a></li>
+                            <li><a href="contactus.html">Contact</a></li>
+                            <li><a href="portfolio.html">Portfolio</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p></div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            document.querySelector('.fa-bars').addEventListener('click', () => {
+                document.querySelector('header').classList.toggle('nav-open');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('header').classList.remove('nav-open');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '10px 5%';
+                    header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '15px 5%';
+                    header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
