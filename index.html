@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO HORIZONS PVT.LTD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" href="./images/image.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+    <script src="form.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease-in-out;
+            padding: 8px 12px;
+        }
+
+        nav ul li a:hover,
+        .active {
+            color: #c0392b;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+
+        /* Home Section */
+        .home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .home h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .home h2 {
+            font-size: 1.8rem;
+            color: #555;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="%23ffffff"></path></svg>');
+            background-size: 1200px 100px;
+        }
+
+        .wave1 {
+            animation: wave1 10s linear infinite;
+            z-index: 1000;
+            opacity: 0.8;
+        }
+
+        .wave2 {
+            animation: wave2 8s linear infinite;
+            z-index: 999;
+            opacity: 0.6;
+            background-position-x: 200px;
+        }
+
+        .wave3 {
+            animation: wave3 6s linear infinite;
+            z-index: 998;
+            opacity: 0.4;
+            background-position-x: 400px;
+        }
+
+        @keyframes wave1 {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1200px;
+            }
+        }
+
+        @keyframes wave2 {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: -1200px;
+            }
+        }
+
+        @keyframes wave3 {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1200px;
+            }
+        }
+
+        /* Services Section */
+        .pt-5 {
+            padding-top: 3rem !important;
+        }
+
+        .pb-5 {
+            padding-bottom: 3rem !important;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-head h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-head p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature_box_col_one {
+            color: #f39c12;
+        }
+
+        .feature_box_col_two {
+            color: #2ecc71;
+        }
+
+        .feature_box_col_three {
+            color: #e74c3c;
+        }
+
+        .item h6 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Counters Section */
+        .counters {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .counters .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .counters .container > div {
+            flex: 1;
+            min-width: 250px;
+            margin: 20px;
+        }
+
+        .counters i {
+            margin-bottom: 15px;
+        }
+
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .counters h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        /* Portfolio Section */
+        .section-head-1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-head-1 h4 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-head-1 h4 span {
+            color: #c0392b;
+        }
+
+        .section-head-1 p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .feature_box_col_four {
+            color: #9b59b6;
+        }
+
+        .feature_box_col_five {
+            color: #1abc9c;
+        }
+
+        .feature_box_col_six {
+            color: #e67e22;
+        }
+
+        /* Communicate Section */
+        .communicate {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .communicate h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .communicate p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background: #c0392b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e74c3c;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .clients-carousel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .clients-carousel img {
+            max-width: 150px;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .clients-carousel img:hover {
+            filter: grayscale(0);
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .heading {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .team .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            width: 280px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card .image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .card .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .image img {
+            transform: scale(1.1);
+        }
+
+        .card .info {
+            padding: 20px;
+        }
+
+        .card .info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card .info span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .icons {
+            margin-top: 15px;
+        }
+
+        .icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #f1f1f1;
+            border-radius: 50%;
+            margin: 0 5px;
+            color: #333;
+            line-height: 35px;
+            transition: all 0.3s;
+        }
+
+        .icons a:hover {
+            background: #c0392b;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #E9EBF0;
+            padding: 50px 0 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 0 15px 30px;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h4:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #c0392b;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 10px 0;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        .footer-section ul li a:hover {
+            color: #c0392b;
+            padding-left: 5px;
+        }
+
+        .footer-subscribe {
+            text-align: left;
+        }
+
+        .subscribe-box {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+            max-width: 400px;
+        }
+
+        .subscribe-box input {
+            border: none;
+            padding: 12px;
+            flex: 1;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .subscribe-box button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .subscribe-box button:hover {
+            background-color: #c0392b;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            margin: 0 5px;
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: #c0392b;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quote-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #c0392b;
+            padding: 15px;
+            writing-mode: vertical-rl;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px 0 0 10px;
+            transition: background 0.3s;
+            z-index: 999;
+        }
+
+        .quote-button:hover {
+            background: #e63939;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: #c0392b;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            display: none;
+            z-index: 999;
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #333;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .home h1 {
+                font-size: 2.5rem;
+            }
+            
+            .home h2 {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            nav ul li a {
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: white;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transition: 0.5s;
+                padding: 20px 0;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+                font-size: 18px;
+            }
+            
+            .home h1 {
+                font-size: 2rem;
+            }
+            
+            .home h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-head h1, .section-head-1 h4, .heading {
+                font-size: 2rem;
+            }
+            
+            .counters .container > div {
+                min-width: 200px;
+            }
+            
+            .counter {
+                font-size: 2.5rem;
+            }
+            
+            .footer-section {
+                min-width: 100%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            
+            .footer-subscribe {
+                text-align: center;
+            }
+            
+            .subscribe-box {
+                margin: 10px auto;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            header {
+                padding: 10px 5%;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+            
+            .home {
+                padding-top: 70px;
+            }
+            
+            .home h1 {
+                font-size: 1.8rem;
+            }
+            
+            .home h2 {
+                font-size: 1rem;
+            }
+            
+            .section-head h1, .section-head-1 h4, .heading {
+                font-size: 1.8rem;
+            }
+            
+            .item {
+                padding: 20px;
+            }
+            
+            .counter {
+                font-size: 2rem;
+            }
+            
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .quote-button {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Info Horizons Logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="aboutus.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="intershipPage.html">INTERNSHIP</a></li>
+                <li><a href="portfolio.html">PORTFOLIO</a></li>
+                <li><a href="career1.html">CAREER</a></li>
+                <li><a href="contactus.html">CONTACT</a></li>
+                <li><a href="blogs.html">BLOGS</a></li>
+                <li><a href="crp.html">CRP</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <h1>INFO HORIZONS PVT LTD</h1>
+        <h2>The Consulting Company!</h2>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </section>
+
+    <div class="pt-5 pb-5" style="background-color: #f2f2f2;">
+        <div class="container">
+            <div class="row">
+                <div class="section-head col-sm-12" id="service">
+                    <h1>Our Services</h1>
+                    <p>We help you to build high-quality digital solutions and products as well as deliver a wide range
+                        of related professional services. We are providing world-class service to our clients.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="item"> <span class="icon feature_box_col_one"><i class="fa fa-laptop"></i></span>
+                        <h6>Web App Development</h6>
+                        <p>Our Custom Web Development Services Include Both Front-End And Back-End Development. Whether
+                            It Is Enhancing An Existing App Or Architecting An Enterprise App, Our Developers Are Up For
+                            The Challenge.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="item"> <span class="icon feature_box_col_two"><i class="fa fa-android"></i></span>
+                        <h6>Mobile App Development</h6>
+                        <p>We Have Expertise In Creating Multi-Platform Mobile App Solutions For Both Android And IOS
+                            Devices. Using PhoneGap, Xamarin, And React Native, We Offer Custom Mobile App That Runs
+                            Smoothly On Multiple Platforms.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="item"> <span class="icon feature_box_col_three"><i class="fa fa-magic"></i></span>
+                        <h6>Digital Marketing</h6>
+                        <p>The digital marketing services that we provide have their own set of charms. By taking our
+                            digital marketing services, our clients will be able to increase visibility and engage with
+                            their customers at the online platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <section class="counters">
+        <div class="container">
+            <div>
+                <i class="far fa-clock fa-4x"></i>
+                <div class="counter" data-target="13500">0</div>
+                <h3>Working Hours</h3>
+            </div>
+            <div>
+                <i class="fas fa-gift fa-4x"></i>
+                <div class="counter" data-target="720">0</div>
+                <h3>Completed Projects</h3>
+            </div>
+            <div>
+                <i class="fas fa-users fa-4x"></i>
+                <div class="counter" data-target="480">0</div>
+                <h3>Happy Clients</h3>
+            </div>
+            <div>
+                <i class="fas fa-award fa-4x"></i>
+                <div class="counter" data-target="120">0</div>
+                <h3>Awards Received</h3>
+            </div>
+        </div>
+    </section>
+
+    <div class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="section-head-1 col-sm-12" style="text-align: center;">
+                    <h4 style="margin-top: -5rem;" id="portfolio"><span>Our</span> Projects</h4>
+
+                    <p>The objective of IT Company is to enable a large number of youth to take up <br>industry-relevant
+                        skill training that will help them<br> in securing a better livelihood.
+                    </p>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+
+                    <div class="item"> <span class="icon feature_box_col_four"><i class="fa fa-database"></i></span>
+                        <h6>Project-1</h6>
+
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor
+                            Aenean massa.<br><br><br></p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                    <div class="item"> <span class="icon feature_box_col_five"><i class="fa fa-upload"></i></span>
+                        <h6>Project-2</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor
+                            Aenean massa.<br><br><br></p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="item"> <span class="icon feature_box_col_six"><i class="fa fa-camera"></i></span>
+                        <h6>Project-3</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor
+                            Aenean massa.<br><br><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="communicate">
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <a href="#contact"><button class="btn">Contact Now</button></a>
+    </div>
+
+   
+    <a href="#" class="back-to-top"><i class="ion-ios-arrow-up"></i></a>
+
+    <section class="team" style="margin-top: 7rem;">
+        <h1 class="heading" style="margin-top: -1.5rem;" id="team">our team</h1>
+        <p></p>
+        <div class="row">
+            <div class="card">
+                <div class="image">
+                    <img src="./images/pexels-andrea-piacquadio-845434.jpg" alt="Team member 1">
+                </div>
+                <div class="info">
+                    <h3>KRISHNA KATPAL</h3>
+                    <span>Web Developer</span>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                        <a href="https://twitter.com/login" class="fab fa-twitter"></a>
+                        <a href="https://www.instagram.com/soulkazition?igsh=MXc3OGIzOWNhN3JpNg=="
+                            class="fab fa-instagram"></a>
+                        <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="./images/pexels-vinicius-wiesehofer-1130624.jpg" alt="Team member 1">
+                </div>
+                <div class="info">
+                    <h3>DWARKADISH KAPSE</h3>
+                    <span>Mobile Developer</span>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                        <a href="https://twitter.com/login" class="fab fa-twitter"></a>
+                        <a href="https://www.instagram.com/dwark__ish?igsh=bnVxcTZuZHA3Z2tm"
+                            class="fab fa-instagram"></a>
+                        <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="./images/hitesh badgujar.jpg" alt="Team member 1">
+                </div>
+                <div class="info">
+                    <h3>HITESH BADGUJAR</h3>
+                    <span>Graphic Designer</span>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                        <a href="https://twitter.com/login" class="fab fa-twitter"></a>
+                       
+                        <a href="https://www.instagram.com/hitesh_b1501?igsh=MTB5cDlzdHhvM21mcQ=="
+                            class="fab fa-instagram"></a>
+                        <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image">
+                    <img src="./images/my1.jpg" alt="Team member 1">
+                </div>
+                <div class="info">
+                    <h3>HITESH INGALE</h3>
+                    <span>Web Designer</span>
+                    <div class="icons">
+                        <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                        <a href="https://twitter.com/login" class="fab fa-twitter"></a>
+                        <a href="https://www.instagram.com/hit._.in?igsh=MXhtZDRzMGtlcnVhZw=="
+                            class="fab fa-instagram"></a>
+                        <a href="https://www.linkedin.com/" class="fab fa-linkedin"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://placehold.co/200x50/007BFF/FFFFFF/png?text=INFO+HORIZONS" alt="Info Horizons Logo">
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="">Services</a></li>
+                        <li><a href="intershipPage.html">Internship</a></li>
+                        <li><a href="career1.html">Career</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                        <li><a href="blogs.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>jpg
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-subscribe">
+                    <h4>Subscribe for email updates</h4>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Enter your email">
+                        <button>&gt;</button>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All copyrights reserved © INFO HORIZON Pvt. Ltd.</p>
+        </div>
+    </footer>
+
+    <div class="quote-button">
+        GET A QUOTE
+    </div>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+        
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+        
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            updateCount();
+        });
+        
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
